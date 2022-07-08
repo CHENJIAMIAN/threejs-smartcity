@@ -1,9 +1,10 @@
 <template>
-    <div ref="webgl">
+    <div>
         <page-header>
             <input type="checkbox" v-model="isShowEcharts" />
             显示echart图表
         </page-header>
+        
         <echarts v-if="isShowEcharts"></echarts>
 
         <!-- 显示杨浦区-复旦大学的精灵图 -->
@@ -22,10 +23,6 @@
     import FlameTag from './threejs/HTMLTag/FlameTag.vue'; //火焰标注的标签
 
     export default {
-        name: 'HelloWorld',
-        props: {
-            // msg: String
-        },
         data() {
             return {
                 isShowEcharts: false,
@@ -34,12 +31,10 @@
         components: {
             PageHeader,
             echarts,
-            CSS3DSpriteDemo,//FIXME:为什么显示不出来了
+            CSS3DSpriteDemo, //FIXME:为什么显示不出来了
             FlameTag,
         },
         mounted() {
-            // this.$refs.webgl.appendChild(renderer.domElement);
-            // // Three.js渲染结果Canvas画布插入到body元素中
             document.body.appendChild(renderer.domElement);
             renderer.domElement.style.position = 'absolute';
             renderer.domElement.style.top = '0px';

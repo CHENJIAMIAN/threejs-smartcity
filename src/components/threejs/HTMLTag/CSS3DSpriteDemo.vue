@@ -40,18 +40,19 @@
         name: 'flyTag',
         data() {
             return {
-                height: 300, //无人机飞行高度300米
-                E: 121.49926536464691, //失火经纬度坐标
-                N: 31.24289350905988,
+                // height: 300, //无人机飞行高度300米
+                // E: 121.49926536464691, //失火经纬度坐标
+                // N: 31.24289350905988,
             };
         },
         mounted() {
-            let label = tag(300); //创建标签对象
-            label.position.set(-8, 85, -45); // 标签对象和mesh对象一样可以设置位置，可以根据需要偏移位置
+            let label = this.tag(300); //创建标签对象
+            label.position.set(0, 0, 145); // 标签对象和mesh对象一样可以设置位置，可以根据需要偏移位置
             flyGroup.add(label); //标签对象添加到三维场景
-
+        },
+        methods: {
             // 创建一个HTML标签
-            function tag(size) {
+            tag(size) {
                 // 获取div元素(作为标签)
                 let div = document.getElementById('flytag');
                 div.style.display = 'block'; //HTML标签代码中设置了display:none;，这里改为'block'
@@ -65,7 +66,7 @@
                 // label.position.set(x, y, z);
                 div.style.pointerEvents = 'none'; //避免HTML标签遮挡三维场景的鼠标事件
                 return label; //返回CSS3模型标签
-            }
+            },
         },
     };
 </script>

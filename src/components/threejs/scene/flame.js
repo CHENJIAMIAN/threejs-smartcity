@@ -44,7 +44,7 @@ function createFlame(size) {
   let stopAnimationFrame = null;
   // 火焰动画生成
   function UpdateLoop() {
-    t += 0.1; //调节火焰切换速度
+    t += 1; //调节火焰切换速度
     if (t > num) t = 0;
     //  Math.floor(t)取整 保证一帧一帧切换
     texture.offset.x = Math.floor(t) / num; // 动态更新纹理偏移 播放关键帧动画 产生火焰然后效果
