@@ -11,7 +11,7 @@
 
 <script>
     import * as THREE from 'three';
-    import { exportGLTF } from './threejs/scene/exportGLTF.js';
+    import { exportGLTF } from './threejs/scene/ExportGLTF.js';
     import { model } from './threejs/scene/model.js';
     import {
         PolygonMesh,

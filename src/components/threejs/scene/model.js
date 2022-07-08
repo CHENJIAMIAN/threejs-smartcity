@@ -6,13 +6,13 @@ import { lon2xy } from "./math.js";
 import { WaterShapeMesh } from "./WaterShapeMesh.js";
 import { PolygonMesh, material as polygonMaterial } from "./PolygonMesh.js";
 import { ExtrudeMesh } from "./ExtrudeMesh.js";
-import { createRadarGroup } from "./radarGroup.js";
-import { createCylinderMesh } from "./cylinderMesh.js";
+import { createRadarGroup } from "./RadarMesh.js";
+import { createCylinderMesh } from "./CylinderMesh.js";
 import { createConeMesh } from "./ConeMesh.js";
-import { wallGroup } from "./wallGroup.js";
+import { wallGroup } from "./WallGroup.js";
 
-import { wallGroup as wallGroup2 } from "./wallGroup2.js";
-import { rendeLineGroup } from "./line.js";
+import { wallGroup as wallGroup2 } from "./WallGroup2.js";
+import { rendeLineGroup } from "./SubwayMesh.js";
 
 let model = new THREE.Group(); //声明一个组对象，用来添加城市三场场景的模型对象
 let loader = new THREE.FileLoader();

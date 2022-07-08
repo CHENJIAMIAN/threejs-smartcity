@@ -35,7 +35,7 @@
 
 <script>
     import { CSS3DSprite } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
-    import { flyGroup } from '../scene/flyGroup.js'; // 无人机模型
+    import { DroneMesh } from '../scene/DroneMesh.js'; // 无人机模型
     export default {
         name: 'flyTag',
         data() {
@@ -48,7 +48,7 @@
         mounted() {
             let label = this.tag(300); //创建标签对象
             label.position.set(0, 0, 145); // 标签对象和mesh对象一样可以设置位置，可以根据需要偏移位置
-            flyGroup.add(label); //标签对象添加到三维场景
+            DroneMesh.add(label); //标签对象添加到三维场景
         },
         methods: {
             // 创建一个HTML标签

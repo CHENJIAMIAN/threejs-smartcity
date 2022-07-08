@@ -6,7 +6,7 @@ import { model } from './model.js';
 // import {
 //   model
 // } from './loadGLTFModel.js';
-import { flyGroup } from './flyGroup.js';
+import { DroneMesh } from './DroneMesh.js';
 import { lon2xy } from './math.js';
 
 /**
@@ -14,7 +14,7 @@ import { lon2xy } from './math.js';
  */
 let scene = new THREE.Scene();
 scene.add(model); //三维模型添加到场景中
-scene.add(flyGroup); //gltf飞机模型添加到场景中
+scene.add(DroneMesh); //gltf飞机模型添加到场景中
 /**
  * 光源设置
  */

@@ -5,7 +5,7 @@
 <script>
 import { CSS2DObject } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 import { model } from "../scene/model.js";
-import { createFlame } from "../scene/flame.js"; // 火焰网格模型
+import { createFlame } from "../scene/FireMesh.js"; // 火焰网格模型
 import { lon2xy } from "../scene/math.js";
 
 export default {

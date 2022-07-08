@@ -5,17 +5,17 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 import { lon2xy } from "./math.js";
 
-import { createLightSphereMesh } from "./lightSphereMesh.js";
-import { createSignalMesh } from "./signalMesh.js";
+import { createLightSphereMesh } from "./LightSphereMesh.js";
+import { createSignalMesh } from "./SignalMesh.js";
 
-let flyGroup = new THREE.Group(); // 一架无人机\
-flyGroup.name="flyGroup";
+let DroneMesh = new THREE.Group(); // 一架无人机\
+DroneMesh.name="DroneMesh";
 
 let LightSphereMesh = createLightSphereMesh(120);
-flyGroup.add(LightSphereMesh);
+DroneMesh.add(LightSphereMesh);
 let SignalMesh = createSignalMesh();
 // console.log('SignalMesh', SignalMesh)
-flyGroup.add(SignalMesh);
+DroneMesh.add(SignalMesh);
 
 let mixer = null; //声明一个混合器变量
 let loader = new GLTFLoader();
@@ -28,7 +28,7 @@ loader.load("./fly.glb", function (gltf) {
   fly.position.x = -28 * 4; //如果美术导出的模型不居中，需要代码调整
   fly.position.z = 8 * 4;
   // console.log('gltf', gltf);
-  flyGroup.add(fly);
+  DroneMesh.add(fly);
   fly.traverse(function (child) {
     if (child.isMesh) {
       let material = child.material;
@@ -68,9 +68,9 @@ let xy = lon2xy(E, N);
 let x = xy.x;
 let y = xy.y;
 // 设置无人机坐标
-flyGroup.position.set(x, y, height);
+DroneMesh.position.set(x, y, height);
 
 // 姿态调整
-flyGroup.rotateX(Math.PI / 2);
+DroneMesh.rotateX(Math.PI / 2);
 
-export { flyGroup };
+export { DroneMesh };
