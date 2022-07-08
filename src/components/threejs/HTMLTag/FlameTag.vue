@@ -18,27 +18,27 @@ export default {
     };
   },
   mounted() {
-    var h = 200; //火焰高度尺寸
-    var flame = createFlame(h); //创建一个火焰对象
+    let h = 200; //火焰高度尺寸
+    let flame = createFlame(h); //创建一个火焰对象
     model.add(flame);
-    var xy = lon2xy(this.E, this.N);
-    var x = xy.x;
-    var y = xy.y;
+    let xy = lon2xy(this.E, this.N);
+    let x = xy.x;
+    let y = xy.y;
     // 设置火焰坐标
     flame.position.set(x, y, this.height);
 
     // 火焰上方标签
-    var messageTag = tag("东方明珠1601" + " 失火了 ！！！");
+    let messageTag = tag("东方明珠1601" + " 失火了 ！！！");
     flame.add(messageTag); //id"messageTag"对应的HTML元素作为three.js标签
     messageTag.position.y += h; //考虑火焰高度 向上适当偏移
 
     // 创建一个HTML标签
     function tag(name) {
       // 获取div元素(作为标签)
-      var div = document.getElementById("flametag");
+      let div = document.getElementById("flametag");
       div.innerHTML = name;
       //div元素包装为CSS2模型对象CSS2DObject
-      var label = new CSS2DObject(div);
+      let label = new CSS2DObject(div);
       div.style.pointerEvents = "none"; //避免HTML标签遮挡三维场景的鼠标事件
       // 设置HTML元素标签在three.js世界坐标中位置
       // label.position.set(x, y, z);

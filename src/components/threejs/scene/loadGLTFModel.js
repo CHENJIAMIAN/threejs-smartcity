@@ -4,21 +4,21 @@ import * as THREE from "three";
 import output_fragment from "./shader/bulid_fragment.glsl.js";
 // 引入gltf模型加载库GLTFLoader.js
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-var model = new THREE.Group(); //声明一个组对象，用来添加城市三场场景的模型对象
+let model = new THREE.Group(); //声明一个组对象，用来添加城市三场场景的模型对象
 
-var loader = new GLTFLoader(); //创建一个GLTF加载器
+let loader = new GLTFLoader(); //创建一个GLTF加载器
 loader.load("./model/上海0.06.glb", function (gltf) {
   //gltf加载成功后返回一个对象
   console.log("控制台查看gltf对象结构", gltf);
   //把gltf.scene中的所有模型添加到model组对象中
   model.add(gltf.scene);
 
-  var river = gltf.scene.getObjectByName("黄浦江");
+  let river = gltf.scene.getObjectByName("黄浦江");
   river.material = new THREE.MeshLambertMaterial({
     color: river.material.color, //读取模型本身的颜色
   });
 
-  var build = gltf.scene.getObjectByName("楼房");
+  let build = gltf.scene.getObjectByName("楼房");
   build.material = new THREE.MeshLambertMaterial({
     color: 0x00ffff, //颜色
   });

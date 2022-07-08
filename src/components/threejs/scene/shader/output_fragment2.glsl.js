@@ -1,8 +1,4 @@
 /*
- * @Author: janasluo
- * @Date: 2021-12-21 18:14:17
- * @LastEditTime: 2021-12-21 18:14:20
- * @LastEditors: janasluo
  * @Description: 江河的光带shader
  */
 export default /* glsl */ `

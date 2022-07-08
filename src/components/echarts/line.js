@@ -1,17 +1,17 @@
 import * as echarts from "echarts";
 export default function (id) {
-  var myChart = echarts.init(document.getElementById(id), "dark");
-  var xdata = [];
-  var ydata = [];
-  var ydata2 = [];
-  var ydata3 = [];
-  for (var i = 0; i < 24; i++) {
+  let myChart = echarts.init(document.getElementById(id), "dark");
+  let xdata = [];
+  let ydata = [];
+  let ydata2 = [];
+  let ydata3 = [];
+  for (let i = 0; i < 24; i++) {
     xdata.push(i + "");
     ydata.push(30 * Math.random().toFixed(1) + 10);
     ydata2.push(30 * Math.random().toFixed(1) + 40);
     ydata3.push(30 * Math.random().toFixed(1) + 70);
   }
-  var option = {
+  let option = {
     backgroundColor: "rgba(255,255,255,0.0)",
     tooltip: {
       trigger: "axis",

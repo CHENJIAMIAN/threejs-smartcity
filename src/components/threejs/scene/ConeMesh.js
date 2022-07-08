@@ -7,14 +7,14 @@ import { createWaveMesh } from "./WaveMesh.js";
 // } from './math.js';
 // size:控制整体大小
 function createConeMesh(size, xy, z) {
-  var height = size * 4; //棱锥高度
+  let height = size * 4; //棱锥高度
   // 圆锥体几何体API(ConeGeometry)圆周方向四等分实现四棱锥效果
-  var geometry = new THREE.ConeGeometry(size, height, 4, 1, true);
+  let geometry = new THREE.ConeGeometry(size, height, 4, 1, true);
   // 可以根据需要旋转到特定角度
   // geometry.rotateX(Math.PI);
   geometry.rotateX(-Math.PI / 2);
   geometry.translate(0, 0, height / 2);
-  var material = new THREE.MeshLambertMaterial({
+  let material = new THREE.MeshLambertMaterial({
     map: new THREE.TextureLoader().load("./渐变.png"),
     // color: 0x22ffcc,
     color: 0xccff22,
@@ -23,17 +23,17 @@ function createConeMesh(size, xy, z) {
     side: THREE.DoubleSide,
     depthTest: true,
   });
-  var mesh = new THREE.Mesh(geometry, material);
+  let mesh = new THREE.Mesh(geometry, material);
 
   // 棱锥上在叠加一个棱锥
-  var mesh2 = mesh.clone();
+  let mesh2 = mesh.clone();
   mesh2.scale.z = 0.5;
   mesh2.position.z = height * (1 + mesh2.scale.z);
   mesh2.rotateX(Math.PI);
   mesh.add(mesh2);
 
-  var x = xy.x;
-  var y = xy.y;
+  let x = xy.x;
+  let y = xy.y;
   // 设置坐标
   mesh.position.set(x, y, z);
 
@@ -44,7 +44,7 @@ function createConeMesh(size, xy, z) {
   }
   animation();
 
-  var WaveMesh = createWaveMesh(size);
+  let WaveMesh = createWaveMesh(size);
   WaveMesh.position.z = height;
   mesh.add(WaveMesh);
 

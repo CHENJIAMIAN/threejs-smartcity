@@ -1,17 +1,13 @@
 /*
- * @Author: janasluo
- * @Date: 2021-12-21 10:44:19
- * @LastEditTime: 2021-12-21 17:42:25
- * @LastEditors: janasluo
  * @Description: 行政边界围墙流动动画
  */
 // 引入Three.js
 import * as THREE from "three";
 import { lon2xy } from "./math.js";
 
-var wallGroup = new THREE.Group(); //声明一个组对象，用来添加加载成功的三维场景
+let wallGroup = new THREE.Group(); //声明一个组对象，用来添加加载成功的三维场景
 
-var c = [
+let c = [
   // 0, 0, //顶点1坐标
   // 60, 0, //顶点2坐标
   // 60, 80, //顶点3坐标
@@ -19,7 +15,7 @@ var c = [
   // -20, 80, //顶点5坐标
   // 0, 0, //顶点6坐标  和顶点1重合
 ];
-var loader = new THREE.FileLoader();
+let loader = new THREE.FileLoader();
 loader.setResponseType("json");
 loader.load("./外滩街道边界.json", function (data) {
   data.features.forEach((build) => {
@@ -32,7 +28,7 @@ loader.load("./外滩街道边界.json", function (data) {
       }
       build.geometry.coordinates.forEach((pointsArr) => {
         pointsArr[0].forEach((elem) => {
-          var xy = lon2xy(elem[0], elem[1]); //经纬度转墨卡托坐标
+          let xy = lon2xy(elem[0], elem[1]); //经纬度转墨卡托坐标
           c.push(xy.x, xy.y);
         });
       });
@@ -42,10 +38,10 @@ loader.load("./外滩街道边界.json", function (data) {
 });
 
 function createRadarGroup(c) {
-  var posArr = [];
-  var uvrr = [];
-  var h = 100; //围墙拉伸高度
-  for (var i = 0; i < c.length - 2; i += 2) {
+  let posArr = [];
+  let uvrr = [];
+  let h = 100; //围墙拉伸高度
+  for (let i = 0; i < c.length - 2; i += 2) {
     // 围墙多边形上两个点构成一个直线扫描出来一个高度为h的矩形
     // 矩形的三角形1
     posArr.push(
@@ -66,7 +62,7 @@ function createRadarGroup(c) {
     uvrr.push(0, 0, 1, 0, 1, 1);
     uvrr.push(0, 0, 1, 1, 0, 1);
   }
-  var geometry = new THREE.BufferGeometry(); //声明一个空几何体对象
+  let geometry = new THREE.BufferGeometry(); //声明一个空几何体对象
   // 设置几何体attributes属性的位置position属性
   geometry.attributes.position = new THREE.BufferAttribute(
     new Float32Array(posArr),
@@ -75,7 +71,7 @@ function createRadarGroup(c) {
   // 设置几何体attributes属性的位置uv属性
   geometry.attributes.uv = new THREE.BufferAttribute(new Float32Array(uvrr), 2);
   geometry.computeVertexNormals();
-  var texture = new THREE.TextureLoader().load("./流动.png");
+  let texture = new THREE.TextureLoader().load("./流动.png");
   // 设置阵列模式为 RepeatWrapping
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
@@ -90,7 +86,7 @@ function createRadarGroup(c) {
   }
   flowAnimation();
 
-  var material = new THREE.MeshLambertMaterial({
+  let material = new THREE.MeshLambertMaterial({
     color: 0x00ffff,
     map: texture,
     side: THREE.DoubleSide, //两面可见
@@ -98,11 +94,11 @@ function createRadarGroup(c) {
     // opacity: 0.5,//整体改变透明度
     depthTest: false,
   });
-  var mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
+  let mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
   // mesh.rotateX(-Math.PI / 2);
   wallGroup.add(mesh);
 
-  var mesh2 = mesh.clone();
+  let mesh2 = mesh.clone();
 
   mesh2.material = new THREE.MeshLambertMaterial({
     color: 0x00ffff,
@@ -114,11 +110,11 @@ function createRadarGroup(c) {
   wallGroup.add(mesh2);
 
   // 设置坐标
-  // var E = 121.49926536464691; //经纬度坐标
-  // var N = 31.23819350905988;
-  // var xy = lon2xy(E, N);
-  // var x = xy.x;
-  // var y = xy.y;
+  // let E = 121.49926536464691; //经纬度坐标
+  // let N = 31.23819350905988;
+  // let xy = lon2xy(E, N);
+  // let x = xy.x;
+  // let y = xy.y;
   // wallGroup.position.set(x, y, 0);
 }
 

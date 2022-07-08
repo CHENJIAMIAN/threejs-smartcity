@@ -21,17 +21,19 @@
         name: 'PageHeader',
         data() {
             return {
-                polygonMaterialColor: 'red',
+                polygonMaterialColor: '#BA1C1C',
             };
         },
         watch: {
-            polygonMaterialColor(color, oldValue) {
-                console.log(color);
-                polygonMaterial.color = new THREE.Color(color);
+            polygonMaterialColor: {
+                handler(color, oldValue) {
+                    console.log(color);
+                    polygonMaterial.color = new THREE.Color(color);
+                },
             },
         },
         mounted() {
-            var button = document.getElementById('exportGLTF');
+            let button = document.getElementById('exportGLTF');
             button.addEventListener('click', function () {
                 exportGLTF(model);
             });

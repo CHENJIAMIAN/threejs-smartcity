@@ -1,9 +1,9 @@
 import * as echarts from "echarts";
 
 export default function (id) {
-  var myChart = echarts.init(document.getElementById(id));
+  let myChart = echarts.init(document.getElementById(id));
 
-  var option = {
+  let option = {
     backgroundColor: "rgba(255,255,255,0.0)",
     tooltip: {
       backgroundColor: "rgba(0,0,0,0.6)",

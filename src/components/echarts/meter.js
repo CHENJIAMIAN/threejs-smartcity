@@ -1,12 +1,12 @@
 import * as echarts from "echarts";
 export default function (id) {
-  var myChart = echarts.init(document.getElementById(id));
+  let myChart = echarts.init(document.getElementById(id));
 
-  var dataArr = 90;
-  var colorSet = {
+  let dataArr = 90;
+  let colorSet = {
     color: "#22B95E",
   };
-  var color1 = {
+  let color1 = {
     type: "linear",
     x: 0,
     y: 0,
@@ -24,7 +24,7 @@ export default function (id) {
     ],
     global: false,
   };
-  var color2 = {
+  let color2 = {
     type: "linear",
     x: 0,
     y: 0,
@@ -43,7 +43,7 @@ export default function (id) {
     global: false,
   };
 
-  var option = {
+  let option = {
     backgroundColor: "rgba(255,255,255,0.0)",
     tooltip: {
       formatter: "{a} <br/>{b} : {c}%",
@@ -81,7 +81,7 @@ export default function (id) {
           show: false,
           formatter(value) {
             if (value !== 0) {
-              var num = Math.round(value);
+              let num = Math.round(value);
               return parseInt(num).toFixed(0) + "%";
             } else {
               return 0;
@@ -289,7 +289,7 @@ export default function (id) {
         detail: {
           formatter(value) {
             if (value !== 0) {
-              var num = Math.round(value);
+              let num = Math.round(value);
               return parseInt(num).toFixed(0) + "%";
             } else {
               return 0;

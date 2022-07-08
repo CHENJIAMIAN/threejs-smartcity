@@ -8,18 +8,19 @@ import { lon2xy } from "./math.js";
 import { createLightSphereMesh } from "./lightSphereMesh.js";
 import { createSignalMesh } from "./signalMesh.js";
 
-var flyGroup = new THREE.Group(); // 一架无人机
+let flyGroup = new THREE.Group(); // 一架无人机\
+flyGroup.name="flyGroup";
 
-var LightSphereMesh = createLightSphereMesh(120);
+let LightSphereMesh = createLightSphereMesh(120);
 flyGroup.add(LightSphereMesh);
-var SignalMesh = createSignalMesh();
+let SignalMesh = createSignalMesh();
 // console.log('SignalMesh', SignalMesh)
 flyGroup.add(SignalMesh);
 
-var mixer = null; //声明一个混合器变量
-var loader = new GLTFLoader();
+let mixer = null; //声明一个混合器变量
+let loader = new GLTFLoader();
 loader.load("./fly.glb", function (gltf) {
-  var fly = gltf.scene;
+  let fly = gltf.scene;
 
   // 三维场景默认单位是米，美术导出模型单位是厘米，需要缩小数字尺寸
   // fly.scale.set(0.01,0.01,0.01);
@@ -30,7 +31,7 @@ loader.load("./fly.glb", function (gltf) {
   flyGroup.add(fly);
   fly.traverse(function (child) {
     if (child.isMesh) {
-      var material = child.material;
+      let material = child.material;
       child.material = new THREE.MeshLambertMaterial({
         color: material.color,
       });
@@ -40,14 +41,14 @@ loader.load("./fly.glb", function (gltf) {
   mixer = new THREE.AnimationMixer(fly);
   // console.log('gltf.animations[0]', gltf.animations);
   // obj.animations[0]：获得剪辑clip对象
-  var AnimationAction = mixer.clipAction(gltf.animations[0]);
-  AnimationAction.timeScale = 15; //默认1，可以调节播放速度
+  let AnimationAction = mixer.clipAction(gltf.animations[0]);
+  AnimationAction.timeScale = 10; //默认1，可以调节播放速度
   // AnimationAction.loop = THREE.LoopOnce; //不循环播放
   // AnimationAction.clampWhenFinished=true;//暂停在最后一帧播放的状态
   AnimationAction.play();
 });
 
-var clock = new THREE.Clock();
+let clock = new THREE.Clock();
 
 function UpdateLoop() {
   if (mixer !== null) {
@@ -59,13 +60,13 @@ function UpdateLoop() {
 UpdateLoop();
 
 // 一直无人机数据：经纬度和高度
-var height = 400; //无人机飞行高度300米
-var E = 121.49926536464691; //无人机经纬度坐标
-var N = 31.24289350905988;
+let height = 400; //无人机飞行高度300米
+let E = 121.49926536464691; //无人机经纬度坐标
+let N = 31.24289350905988;
 
-var xy = lon2xy(E, N);
-var x = xy.x;
-var y = xy.y;
+let xy = lon2xy(E, N);
+let x = xy.x;
+let y = xy.y;
 // 设置无人机坐标
 flyGroup.position.set(x, y, height);
 

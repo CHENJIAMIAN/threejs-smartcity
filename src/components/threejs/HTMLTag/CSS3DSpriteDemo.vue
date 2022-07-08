@@ -34,7 +34,6 @@
 </template>
 
 <script>
-    // {  CSS3DObject,CSS3DSprite }
     import { CSS3DSprite } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
     import { flyGroup } from '../scene/flyGroup.js'; // 无人机模型
     export default {
@@ -47,19 +46,19 @@
             };
         },
         mounted() {
-            var label = tag(300); //创建标签对象
+            let label = tag(300); //创建标签对象
             label.position.set(-8, 85, -45); // 标签对象和mesh对象一样可以设置位置，可以根据需要偏移位置
             flyGroup.add(label); //标签对象添加到三维场景
 
             // 创建一个HTML标签
             function tag(size) {
                 // 获取div元素(作为标签)
-                var div = document.getElementById('flytag');
+                let div = document.getElementById('flytag');
                 div.style.display = 'block'; //HTML标签代码中设置了display:none;，这里改为'block'
-                // var label = new CSS3DObject(div);//HTML标签对象 类似矩形平面Mesh
-                var label = new CSS3DSprite(div); //HTML标签对象 类似Sprite
+                // let label = new CSS3DObject(div);//HTML标签对象 类似矩形平面Mesh
+                let label = new CSS3DSprite(div); //HTML标签对象 类似Sprite
                 // CSS3标签HTML元素渲染大小由自身像素尺寸和scale属性决定
-                var w = div.offsetWidth; //获取标签HTML元素宽度
+                let w = div.offsetWidth; //获取标签HTML元素宽度
                 // console.log("w", w);
                 label.scale.set(size / w, size / w, size / w); //缩放CSS3DObject模型对象
                 // 设置HTML元素标签位置

@@ -2,8 +2,8 @@
 import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter.js";
 
 function exportGLTF(input) {
-  var gltfExporter = new GLTFExporter();
-  var options = {
+  let gltfExporter = new GLTFExporter();
+  let options = {
     trs: false,
     onlyVisible: true,
     truncateDrawRange: true,
@@ -20,7 +20,7 @@ function exportGLTF(input) {
           "scene.glb"
         );
       } else {
-        var output = JSON.stringify(result, null, 2);
+        let output = JSON.stringify(result, null, 2);
         save(new Blob([output], { type: "text/plain" }), "scene.gltf");
       }
     },
@@ -28,7 +28,7 @@ function exportGLTF(input) {
   );
 }
 
-var link = document.createElement("a");
+let link = document.createElement("a");
 link.style.display = "none";
 // document.body.appendChild(link);
 function save(blob, filename) {

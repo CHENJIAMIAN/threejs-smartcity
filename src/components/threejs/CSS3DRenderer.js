@@ -1,7 +1,7 @@
 import { CSS3DRenderer } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 
 // 创建一个CSS3渲染器CSS3DRenderer
-var CSS3LabelRenderer = new CSS3DRenderer();
+let CSS3LabelRenderer = new CSS3DRenderer();
 CSS3LabelRenderer.setSize(window.innerWidth, window.innerHeight);
 CSS3LabelRenderer.domElement.style.position = "absolute";
 // 相对标签原位置位置偏移大小

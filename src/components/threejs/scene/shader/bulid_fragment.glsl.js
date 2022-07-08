@@ -1,8 +1,4 @@
 /*
- * @Author: janasluo
- * @Date: 2021-11-11 13:50:52
- * @LastEditTime: 2021-12-21 18:19:49
- * @LastEditors: janasluo
  * @Description: 建筑物渐变及光带shader
  */
 export default /* glsl */ `

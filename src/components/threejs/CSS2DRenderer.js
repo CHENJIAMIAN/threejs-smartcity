@@ -1,7 +1,7 @@
 import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 
 // 创建一个CSS2渲染器CSS2DRenderer
-var CSS2LabelRenderer = new CSS2DRenderer();
+let CSS2LabelRenderer = new CSS2DRenderer();
 CSS2LabelRenderer.setSize(window.innerWidth, window.innerHeight);
 CSS2LabelRenderer.domElement.style.position = "absolute";
 // 相对标签原位置位置偏移大小
