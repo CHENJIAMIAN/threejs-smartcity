@@ -60,7 +60,7 @@ model.add(wallGroup2);
 
 setTimeout(() => {
   model.add(rendeLineGroup());
-}, 2000);
+}, 1000);
 // model.add(rendeLineGroup())
 
 // 绿地
