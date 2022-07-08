@@ -10,14 +10,14 @@ import { lon2xy } from "../scene/math.js";
 
 export default {
   name: "FlameTag",
-  data: function () {
+  data() {
     return {
       height: 200, //标注高度
       E: 121.49526536464691, //失火经纬度坐标
       N: 31.24189350905988,
     };
   },
-  mounted: function () {
+  mounted() {
     var h = 200; //火焰高度尺寸
     var flame = createFlame(h); //创建一个火焰对象
     model.add(flame);

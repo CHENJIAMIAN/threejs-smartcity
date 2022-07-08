@@ -75,7 +75,7 @@ export default function (id) {
             show: true,
             position: "outside",
             color: "#ddd",
-            formatter: function (params) {
+            formatter(params) {
               var percent = 0;
               var total = 0;
               for (var i = 0; i < trafficWay.length; i++) {

@@ -1,11 +1,4 @@
-/*
- * @Author: janasluo
- * @Date: 2021-12-16 14:47:05
- * @LastEditTime: 2021-12-16 14:48:12
- * @LastEditors: janasluo
- * @Description:
- * @FilePath: /test/Users/janas/work/project/threejs/threejs-smartcity/src/components/threejs/scene/exportGLTF.js
- */
+
 import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter.js";
 
 function exportGLTF(input) {

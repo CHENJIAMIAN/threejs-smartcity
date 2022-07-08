@@ -79,7 +79,7 @@ export default function (id) {
         },
         detail: {
           show: false,
-          formatter: function (value) {
+          formatter(value) {
             if (value !== 0) {
               var num = Math.round(value);
               return parseInt(num).toFixed(0) + "%";
@@ -212,7 +212,7 @@ export default function (id) {
           fontFamily: "SourceHanSansSC-Regular",
           fontWeight: "bold",
           distance: -30,
-          formatter: function (v) {
+          formatter(v) {
             switch (v + "") {
               case "0":
                 return "0";
@@ -287,7 +287,7 @@ export default function (id) {
           color: "#ffffff",
         },
         detail: {
-          formatter: function (value) {
+          formatter(value) {
             if (value !== 0) {
               var num = Math.round(value);
               return parseInt(num).toFixed(0) + "%";

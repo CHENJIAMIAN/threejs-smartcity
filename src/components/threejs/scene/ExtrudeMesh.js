@@ -1,11 +1,4 @@
-/*
- * @Author: janasluo
- * @Date: 2021-11-17 18:01:08
- * @LastEditTime: 2021-12-20 16:22:07
- * @LastEditors: janasluo
- * @Description:
- * @FilePath: /test/Users/janas/work/project/threejs/threejs-smartcity/src/components/threejs/scene/ExtrudeMesh.js
- */
+
 // 引入three.js
 import * as THREE from "three";
 // 几何体辅助合并工具

@@ -65,7 +65,7 @@ import radar from "./echarts/radar.js";
 import meter from "./echarts/meter.js";
 export default {
   name: "echarts",
-  mounted: function () {
+  mounted() {
     line("echarts1");
     ring("echarts2");
 

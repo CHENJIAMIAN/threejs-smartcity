@@ -1,11 +1,4 @@
-/*
- * @Author: janasluo
- * @Date: 2021-12-16 15:34:08
- * @LastEditTime: 2021-12-16 16:14:20
- * @LastEditors: janasluo
- * @Description:  加载gltf模型
- * @FilePath: /test/Users/janas/work/project/threejs/threejs-smartcity/src/components/threejs/scene/loadGLTFModel.js
- */
+
 // 引入Three.js
 import * as THREE from "three";
 import output_fragment from "./shader/bulid_fragment.glsl.js";

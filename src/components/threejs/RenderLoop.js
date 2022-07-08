@@ -1,11 +1,4 @@
-/*
- * @Author: janasluo
- * @Date: 2021-11-17 19:23:14
- * @LastEditTime: 2022-01-04 15:52:50
- * @LastEditors: janasluo
- * @Description:
- * @FilePath: /test/Users/janas/work/project/threejs/threejs-smartcity/src/components/threejs/RenderLoop.js
- */
+
 import * as THREE from "three";
 import { scene } from "./scene/index.js"; //Three.js三维场景
 import { renderer, camera } from "./RendererCamera.js"; //渲染器对象和相机对象

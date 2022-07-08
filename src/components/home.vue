@@ -36,7 +36,7 @@ export default {
     FlyTag,
     FlameTag,
   },
-  created: function () {
+  created() {
     // this.$refs.webgl.appendChild(renderer.domElement);//不可以
     // Three.js渲染结果Canvas画布插入到body元素中
     // document.body.appendChild(renderer.domElement);//可以访问body
@@ -44,7 +44,7 @@ export default {
     // renderer.domElement.style.top = '0px';
     // renderer.domElement.style.zIndex = '-1';//canvas全屏，不遮挡其它HTML元素
   },
-  mounted: function () {
+  mounted() {
     // this.$refs.webgl.appendChild(renderer.domElement);
     // // Three.js渲染结果Canvas画布插入到body元素中
     document.body.appendChild(renderer.domElement);

@@ -1,11 +1,4 @@
-/*
- * @Author: janasluo
- * @Date: 2021-11-17 19:31:08
- * @LastEditTime: 2022-01-06 10:49:04
- * @LastEditors: janasluo
- * @Description:
- * @FilePath: /test/Users/janas/work/project/threejs/threejs-smartcity/src/components/threejs/scene/index.js
- */
+
 // 场景总文件
 // 引入Three.js
 import * as THREE from "three";

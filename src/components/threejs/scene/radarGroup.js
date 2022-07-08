@@ -1,11 +1,4 @@
-/*
- * @Author: janasluo
- * @Date: 2021-12-16 17:21:13
- * @LastEditTime: 2021-12-22 23:28:42
- * @LastEditors: janasluo
- * @Description: 雷达扫描图
- * @FilePath: /test/Users/janas/work/project/threejs/threejs-smartcity/src/components/threejs/scene/radarGroup.js
- */
+
 // 引入Three.js
 import * as THREE from "three";
 import { lon2xy } from "./math.js";
