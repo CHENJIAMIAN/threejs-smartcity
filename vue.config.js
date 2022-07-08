@@ -1,4 +1,4 @@
 module.exports = {
   publicPath:
-    process.env.NODE_ENV === "production" ? "/threejs-smartcity-main/" : "/",
+    process.env.NODE_ENV === "production" ? "/threejs-smartcity/" : "/",
 };
