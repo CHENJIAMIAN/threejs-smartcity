@@ -5,15 +5,15 @@
  * @LastEditors: janasluo
  * @Description: 径向渐变发光球
  */
-import * as THREE from 'three';
-import vertexShader from './shader/light_vertex.glsl.js'
-import fragmentShader from './shader/light_fragment.glsl.js'
+import * as THREE from "three";
+import vertexShader from "./shader/light_vertex.glsl.js";
+import fragmentShader from "./shader/light_fragment.glsl.js";
 
 var material = new THREE.ShaderMaterial({
   vertexShader: vertexShader,
   fragmentShader: fragmentShader,
-  transparent: true
-})
+  transparent: true,
+});
 // size:尺寸
 function createLightSphereMesh(size) {
   // 创建一个球
@@ -30,9 +30,7 @@ function createLightSphereMesh(size) {
   }
   waveAnimation();
 
-  mesh.rotateX(Math.PI / 2);//旋转调整姿态
+  mesh.rotateX(Math.PI / 2); //旋转调整姿态
   return mesh;
 }
-export {
-  createLightSphereMesh
-};
+export { createLightSphereMesh };

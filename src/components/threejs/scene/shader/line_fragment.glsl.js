@@ -5,7 +5,7 @@
  * @LastEditors: janasluo
  * @Description: 地图公路流线shader
  */
-export default /* glsl */`
+export default /* glsl */ `
 #ifdef OPAQUE
 diffuseColor.a = 1.0;
 #endif

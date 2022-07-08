@@ -6,51 +6,45 @@
  * @Description: 地铁公路流线
  */
 // 引入three.js
-import * as THREE from 'three';
-import output_fragment from './shader/line_fragment.glsl.js'
-import {
-  lon2xy
-} from './math.js';
+import * as THREE from "three";
+import output_fragment from "./shader/line_fragment.glsl.js";
+import { lon2xy } from "./math.js";
 function rendeLineGroup() {
   var lineGroup = new THREE.Group(); //声明一个组对象
   var loader = new THREE.FileLoader();
-  loader.setResponseType('json')
+  loader.setResponseType("json");
   //轨迹线数据解析W
-  loader.load('./上海主城区地铁.json', function (data) {
+  loader.load("./上海主城区地铁.json", function (data) {
     data.features.forEach(function (feature) {
       var pointsArr = [];
       var flypointsArr = [];
-      const obj = feature.geometry
-      if (obj.type === 'LineString') {
+      const obj = feature.geometry;
+      if (obj.type === "LineString") {
         obj.coordinates.forEach(function (coord) {
           //经纬度转墨卡托
           var xy = lon2xy(coord[0], coord[1]);
           pointsArr.push(xy.x, xy.y, 0);
           flypointsArr.push([xy.x, xy.y]);
-        })
+        });
       }
-      if (obj.type === 'MultiLineString') {
-
+      if (obj.type === "MultiLineString") {
         obj.coordinates.forEach(function (coordinates) {
-
-          coordinates.forEach(coord => {
+          coordinates.forEach((coord) => {
             //经纬度转墨卡托
             var xy = lon2xy(coord[0], coord[1]);
             pointsArr.push(xy.x, xy.y, 0);
             flypointsArr.push([xy.x, xy.y]);
-          })
-
-        })
+          });
+        });
       }
 
       var line = createLine(pointsArr); //创建一条轨迹线
       lineGroup.add(line);
       var flyPoints = createfly(flypointsArr); //创建一条流线
       lineGroup.add(flyPoints);
-    })
-
+    });
   });
-  return lineGroup
+  return lineGroup;
 }
 
 // 通过一系列坐标点生成一条轨迹线
@@ -68,7 +62,7 @@ function createLine(pointsArr) {
   geometry.attributes.position = attribue;
   // 线条渲染几何体顶点数据
   var material = new THREE.LineBasicMaterial({
-    color: 0x666600 //线条颜色
+    color: 0x666600, //线条颜色
   }); //材质对象
   var line = new THREE.Line(geometry, material); //线条模型对象
   return line;
@@ -79,12 +73,11 @@ function createfly(flypointsArr) {
   var v3Arr = [];
   flypointsArr.forEach(function (coord) {
     v3Arr.push(new THREE.Vector3(coord[0], coord[1], 0));
-  })
+  });
   // 三维样条曲线
   var curve = new THREE.CatmullRomCurve3(v3Arr);
   //曲线上等间距返回多个顶点坐标
   var points = curve.getSpacedPoints(300); //分段数100，返回101个顶点
-
 
   // var index = 20; //取点索引位置
   var index = Math.floor((points.length - 10) * Math.random()); //取点索引位置随机
@@ -106,22 +99,27 @@ function createfly(flypointsArr) {
       percentArr.push(Math.pow(i / half, 0.2));
       var color1 = new THREE.Color(0x666600); //轨迹线颜色
       var color2 = new THREE.Color(0xffff00); //更亮
-      var color = color1.lerp(color2, i / half)
+      var color = color1.lerp(color2, i / half);
       colorArr.push(color.r, color.g, color.b);
     } else {
       // percentArr.push(1-(i-half) / half);
       percentArr.push(Math.pow(1 - (i - half) / half, 0.2));
       const color1 = new THREE.Color(0xffff00); //更亮
-      const color2 = new THREE.Color(0x666600); //轨迹线颜色 
-      const color = color1.lerp(color2, (i - half) / half)
+      const color2 = new THREE.Color(0x666600); //轨迹线颜色
+      const color = color1.lerp(color2, (i - half) / half);
       colorArr.push(color.r, color.g, color.b);
     }
-
   }
-  var percentAttribue = new THREE.BufferAttribute(new Float32Array(percentArr), 1);
+  var percentAttribue = new THREE.BufferAttribute(
+    new Float32Array(percentArr),
+    1
+  );
   geometry2.attributes.percent = percentAttribue;
   // 设置几何体顶点颜色数据
-  geometry2.attributes.color = new THREE.BufferAttribute(new Float32Array(colorArr), 3);
+  geometry2.attributes.color = new THREE.BufferAttribute(
+    new Float32Array(colorArr),
+    3
+  );
 
   // 点模型渲染几何体每个顶点
   var PointsMaterial = new THREE.PointsMaterial({
@@ -137,27 +135,28 @@ function createfly(flypointsArr) {
   PointsMaterial.onBeforeCompile = function (shader) {
     // 顶点着色器中声明一个attribute变量:百分比
     shader.vertexShader = shader.vertexShader.replace(
-      'void main() {',
+      "void main() {",
       [
-        'attribute float percent;', //顶点大小百分比变量，控制点渲染大小
-        'void main() {',
-      ].join('\n') // .join()把数组元素合成字符串
+        "attribute float percent;", //顶点大小百分比变量，控制点渲染大小
+        "void main() {",
+      ].join("\n") // .join()把数组元素合成字符串
     );
     // 调整点渲染大小计算方式
     shader.vertexShader = shader.vertexShader.replace(
-      'gl_PointSize = size;',
-      [
-        'gl_PointSize = percent * percent * size;',
-      ].join('\n') // .join()把数组元素合成字符串
+      "gl_PointSize = size;",
+      ["gl_PointSize = percent * percent * size;"].join("\n") // .join()把数组元素合成字符串
     );
 
-    shader.fragmentShader = shader.fragmentShader.replace('#include <output_fragment>', output_fragment);
+    shader.fragmentShader = shader.fragmentShader.replace(
+      "#include <output_fragment>",
+      output_fragment
+    );
   };
   // 飞线动画
   var indexMax = points.length - num; //飞线取点索引范围
   function animation() {
     if (index > indexMax) index = 0;
-    index += 8
+    index += 8;
     points2 = points.slice(index, index + num); //从曲线上获取一段
     var curve = new THREE.CatmullRomCurve3(points2);
     var newPoints2 = curve.getSpacedPoints(100); //获取更多的点数
@@ -167,9 +166,6 @@ function createfly(flypointsArr) {
   }
   animation();
 
-
-  return flyPoints
+  return flyPoints;
 }
-export {
-  rendeLineGroup
-};
+export { rendeLineGroup };

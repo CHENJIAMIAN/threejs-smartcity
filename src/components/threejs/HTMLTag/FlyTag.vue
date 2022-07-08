@@ -45,8 +45,6 @@ export default {
     };
   },
   mounted: function () {
-   
-
     var label = tag(300); //创建标签对象
     label.position.set(-8, 85, -45); // 标签对象和mesh对象一样可以设置位置，可以根据需要偏移位置
     flyGroup.add(label); //标签对象添加到三维场景
@@ -71,5 +69,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

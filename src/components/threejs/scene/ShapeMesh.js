@@ -1,4 +1,3 @@
-
 /*
  * @Author: janasluo
  * @Date: 2021-11-18 09:42:42
@@ -7,11 +6,9 @@
  * @Description: 江河Shape数据 ShapeGeometry
  */
 // 引入three.js
-import * as THREE from 'three';
-import {
-  lon2xy
-} from './math.js';
-import output_fragment from './shader/output_fragment2.glsl.js'
+import * as THREE from "three";
+import { lon2xy } from "./math.js";
+import output_fragment from "./shader/output_fragment2.glsl.js";
 
 // MeshBasicMaterial:不受光照影响
 // MeshLambertMaterial：几何体表面和光线角度不同，明暗不同
@@ -29,44 +26,40 @@ material.onBeforeCompile = function (shader) {
   };
   // 顶点位置坐标position类似uv坐标进行插值计算，用于在片元着色器中控制片元像素
   shader.vertexShader = shader.vertexShader.replace(
-    'void main() {',
-    ['varying vec3 vPosition;',
-      'void main() {',
-      'vPosition = position;',
-    ].join('\n') // .join()把数组元素合成字符串
+    "void main() {",
+    ["varying vec3 vPosition;", "void main() {", "vPosition = position;"].join(
+      "\n"
+    ) // .join()把数组元素合成字符串
   );
 
   shader.fragmentShader = shader.fragmentShader.replace(
-    'void main() {',
-    ['varying vec3 vPosition;',
-      'uniform float time;',
-      'void main() {',
-    ].join('\n')
+    "void main() {",
+    ["varying vec3 vPosition;", "uniform float time;", "void main() {"].join(
+      "\n"
+    )
   );
 
-  shader.fragmentShader = shader.fragmentShader.replace('#include <output_fragment>', output_fragment);
+  shader.fragmentShader = shader.fragmentShader.replace(
+    "#include <output_fragment>",
+    output_fragment
+  );
 };
-
 
 // pointsArrs：多个多边形轮廓
 function ShapeMesh(pointsArrs) {
   var shapeArr = []; //轮廓形状Shape集合
-  pointsArrs.forEach(pointsArr => {
+  pointsArrs.forEach((pointsArr) => {
     var vector2Arr = [];
     // 转化为Vector2构成的顶点数组
-    pointsArr[0].forEach(elem => {
-      var xy = lon2xy(elem[0], elem[1]);//经纬度转墨卡托坐标
+    pointsArr[0].forEach((elem) => {
+      var xy = lon2xy(elem[0], elem[1]); //经纬度转墨卡托坐标
       vector2Arr.push(new THREE.Vector2(xy.x, xy.y));
     });
     var shape = new THREE.Shape(vector2Arr);
     shapeArr.push(shape);
   });
-  var geometry = new THREE.ShapeGeometry( //填充多边形
-    shapeArr,
-  );
+  var geometry = new THREE.ShapeGeometry(shapeArr); //填充多边形
   var mesh = new THREE.Mesh(geometry, material); //网格模型对象
   return mesh;
 }
-export {
-  ShapeMesh, materialShader2
-};
+export { ShapeMesh, materialShader2 };

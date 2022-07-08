@@ -7,10 +7,8 @@
  * @FilePath: /test/Users/janas/work/project/threejs/threejs-smartcity/src/components/threejs/scene/radarGroup.js
  */
 // 引入Three.js
-import * as THREE from 'three';
-import {
-  lon2xy
-} from './math.js';
+import * as THREE from "three";
+import { lon2xy } from "./math.js";
 
 function createRadarGroup() {
   var radarGroup = new THREE.Group(); //声明一个组对象
@@ -18,7 +16,7 @@ function createRadarGroup() {
   var geometry = new THREE.PlaneGeometry(200, 200);
   var material = new THREE.MeshLambertMaterial({
     color: 0x00ffff,
-    map: new THREE.TextureLoader().load('./扫描雷达.png'),
+    map: new THREE.TextureLoader().load("./扫描雷达.png"),
     side: THREE.DoubleSide, //两面可见
     transparent: true, //需要开启透明度计算，否则着色器透明度设置无效
     // opacity: 0.5,//整体改变透明度
@@ -26,10 +24,9 @@ function createRadarGroup() {
   });
   var mesh = new THREE.Mesh(geometry, material);
 
-
   var material2 = new THREE.MeshLambertMaterial({
     color: 0x00cccc,
-    map: new THREE.TextureLoader().load('./雷达刻度.png'),
+    map: new THREE.TextureLoader().load("./雷达刻度.png"),
     side: THREE.DoubleSide, //两面可见
     transparent: true, //需要开启透明度计算，否则着色器透明度设置无效
     // opacity: 0.5,//整体改变透明度
@@ -56,11 +53,7 @@ function createRadarGroup() {
   }
   rotateAnimation();
 
-  return radarGroup
+  return radarGroup;
 }
 
-
-
-export {
-  createRadarGroup
-}
+export { createRadarGroup };

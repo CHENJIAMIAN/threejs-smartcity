@@ -7,7 +7,7 @@
  */
 
 // 引入Three.js
-import * as THREE from 'three';
+import * as THREE from "three";
 // 创建一个火焰动画
 // size：火焰尺寸   name:失火相关信息
 function createFlame(size) {
@@ -18,7 +18,7 @@ function createFlame(size) {
   geometry.translate(0, h / 2, 0); //火焰底部中点和局部坐标系坐标原点重合
 
   var textureLoader = new THREE.TextureLoader(); //纹理贴图加载器
-  var texture = textureLoader.load('./火焰.png'); //创建一个纹理对象
+  var texture = textureLoader.load("./火焰.png"); //创建一个纹理对象
   var num = 15; //火焰多少帧图
   // .repeat方法设置uv两个方向纹理重复数量
   texture.repeat.set(1 / num, 1); // 1/num：从图像上截图一帧火焰
@@ -37,8 +37,12 @@ function createFlame(size) {
   // 两个火焰mesh交叉叠加
   // flame.add(mesh, mesh.clone().rotateY(Math.PI / 2))
   // 四个火焰mesh交叉叠加
-  flame.add(mesh, mesh.clone().rotateY(Math.PI / 2), mesh.clone().rotateY(Math.PI / 4), mesh.clone().rotateY(Math.PI / 4 * 3))
-
+  flame.add(
+    mesh,
+    mesh.clone().rotateY(Math.PI / 2),
+    mesh.clone().rotateY(Math.PI / 4),
+    mesh.clone().rotateY((Math.PI / 4) * 3)
+  );
 
   var t = 0;
   var stopAnimationFrame = null;
@@ -55,7 +59,7 @@ function createFlame(size) {
   // 火焰动画停止
   flame.stop = function () {
     window.cancelAnimationFrame(stopAnimationFrame); //取消动画
-  }
+  };
   // flame.stop()
 
   // 火焰上方标签
@@ -67,6 +71,4 @@ function createFlame(size) {
   flame.rotateX(Math.PI / 2); //调整火焰姿态与场景适配
   return flame;
 }
-export {
-  createFlame
-}
+export { createFlame };

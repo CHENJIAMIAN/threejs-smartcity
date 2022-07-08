@@ -1,9 +1,13 @@
 <template>
   <div ref="webgl">
-    <page-header></page-header>
-    <echarts></echarts>
-    
+    <page-header>
+      <input type="checkbox" v-model="isShowEcharts" />
+      显示echart图表
+    </page-header>
+    <echarts v-if="isShowEcharts"></echarts>
+
     <fly-tag></fly-tag>
+
     <flame-tag></flame-tag>
   </div>
 </template>
@@ -20,6 +24,11 @@ export default {
   name: "HelloWorld",
   props: {
     // msg: String
+  },
+  data() {
+    return {
+      isShowEcharts: false,
+    };
   },
   components: {
     PageHeader,

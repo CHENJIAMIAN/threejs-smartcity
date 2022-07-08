@@ -18,7 +18,7 @@ export default {
     };
   },
   mounted: function () {
-    var h = 200;//火焰高度尺寸
+    var h = 200; //火焰高度尺寸
     var flame = createFlame(h); //创建一个火焰对象
     model.add(flame);
     var xy = lon2xy(this.E, this.N);
@@ -27,7 +27,7 @@ export default {
     // 设置火焰坐标
     flame.position.set(x, y, this.height);
 
-        // 火焰上方标签
+    // 火焰上方标签
     var messageTag = tag("东方明珠1601" + " 失火了 ！！！");
     flame.add(messageTag); //id"messageTag"对应的HTML元素作为three.js标签
     messageTag.position.y += h; //考虑火焰高度 向上适当偏移

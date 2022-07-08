@@ -6,10 +6,8 @@
  * @Description: 圆柱透明渐变波纹
  */
 // 引入Three.js
-import * as THREE from 'three';
-import {
-  lon2xy
-} from './math.js';
+import * as THREE from "three";
+import { lon2xy } from "./math.js";
 
 /**
  * 创建网格模型
@@ -20,10 +18,10 @@ function createCylinderMesh() {
   geometry.translate(0, 10, 0);
   var material = new THREE.MeshLambertMaterial({
     color: 0x00ffff, //颜色
-    map: new THREE.TextureLoader().load('./渐变3.png'),
-    side: THREE.DoubleSide,//两面可见
+    map: new THREE.TextureLoader().load("./渐变3.png"),
+    side: THREE.DoubleSide, //两面可见
     transparent: true, //需要开启透明度计算，否则着色器透明度设置无效
-    opacity: 0.5,//整体改变透明度
+    opacity: 0.5, //整体改变透明度
     depthTest: false,
   }); //材质对象Material
   var cylinderMesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
@@ -38,7 +36,7 @@ function createCylinderMesh() {
   cylinderMesh.position.set(x, y, 0);
 
   // 波动动画
-  var S = 6;//波动范围设置
+  var S = 6; //波动范围设置
   var _s = 1.0;
   function waveAnimation() {
     _s += 0.02;
@@ -47,10 +45,7 @@ function createCylinderMesh() {
     requestAnimationFrame(waveAnimation);
   }
   waveAnimation();
-  return cylinderMesh
+  return cylinderMesh;
 }
 
-
-export {
-  createCylinderMesh
-}
+export { createCylinderMesh };

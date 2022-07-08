@@ -3,20 +3,16 @@
  * @Date: 2021-11-17 19:23:14
  * @LastEditTime: 2022-01-04 15:52:50
  * @LastEditors: janasluo
- * @Description: 
+ * @Description:
  * @FilePath: /test/Users/janas/work/project/threejs/threejs-smartcity/src/components/threejs/RenderLoop.js
  */
-import * as THREE from 'three';
-import { scene } from './scene/index.js'//Three.js三维场景
-import { renderer, camera } from './RendererCamera.js'//渲染器对象和相机对象
-import { CSS2LabelRenderer } from './CSS2DRenderer.js';
-import { CSS3LabelRenderer } from './CSS3DRenderer.js';
-import {
-  materialShader
-} from './scene/ExtrudeMesh.js'
-import {
-  materialShader2
-} from './scene/WaterShapeMesh.js'
+import * as THREE from "three";
+import { scene } from "./scene/index.js"; //Three.js三维场景
+import { renderer, camera } from "./RendererCamera.js"; //渲染器对象和相机对象
+import { CSS2LabelRenderer } from "./CSS2DRenderer.js";
+import { CSS3LabelRenderer } from "./CSS3DRenderer.js";
+import { materialShader } from "./scene/ExtrudeMesh.js";
+import { materialShader2 } from "./scene/WaterShapeMesh.js";
 
 // 渲染循环
 // 渲染循环
@@ -45,4 +41,4 @@ function render() {
 }
 render();
 
-export { renderer }
+export { renderer };

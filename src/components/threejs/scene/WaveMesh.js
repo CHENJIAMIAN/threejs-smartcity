@@ -6,9 +6,7 @@
  * @Description: 水波纹动效
  */
 // 引入three.js
-import * as THREE from 'three';
-
-
+import * as THREE from "three";
 
 // 所有mesh共享几何体和纹理对象
 
@@ -22,14 +20,13 @@ function createWaveMesh(size) {
   var textureLoader = new THREE.TextureLoader(); // TextureLoader创建一个纹理加载器对象
   var material = new THREE.MeshBasicMaterial({
     // color: 0x22ffcc, //设置光圈颜色
-    color: 0xccff22,//设置光圈颜色
-    map: textureLoader.load('./标注光圈.png'),
-    transparent: true, //使用背景透明的png贴图，注意开启透明计算      
+    color: 0xccff22, //设置光圈颜色
+    map: textureLoader.load("./标注光圈.png"),
+    transparent: true, //使用背景透明的png贴图，注意开启透明计算
     // side: THREE.DoubleSide, //双面可见
     depthTest: false, //禁止深度测试 以免光圈和地面或河流表面深度冲突
   });
   var mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
-
 
   // mesh.rotateX(-Math.PI / 2);
 
@@ -53,6 +50,4 @@ function createWaveMesh(size) {
 
   return mesh;
 }
-export {
-  createWaveMesh
-};
+export { createWaveMesh };

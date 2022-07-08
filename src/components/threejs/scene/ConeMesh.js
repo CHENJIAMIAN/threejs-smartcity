@@ -7,10 +7,8 @@
  * @FilePath: /test/Users/janas/work/project/threejs/threejs-smartcity/src/components/threejs/scene/ConeMesh.js
  */
 // 引入three.js
-import * as THREE from 'three';
-import {
-  createWaveMesh
-} from './WaveMesh.js';
+import * as THREE from "three";
+import { createWaveMesh } from "./WaveMesh.js";
 // import {
 //   lon2xy
 // } from './math.js';
@@ -24,7 +22,7 @@ function createConeMesh(size, xy, z) {
   geometry.rotateX(-Math.PI / 2);
   geometry.translate(0, 0, height / 2);
   var material = new THREE.MeshLambertMaterial({
-    map: new THREE.TextureLoader().load('./渐变.png'),
+    map: new THREE.TextureLoader().load("./渐变.png"),
     // color: 0x22ffcc,
     color: 0xccff22,
     transparent: true, //需要开启透明度计算，否则着色器透明度设置无效
@@ -59,6 +57,4 @@ function createConeMesh(size, xy, z) {
 
   return mesh;
 }
-export {
-  createConeMesh
-};
+export { createConeMesh };
