@@ -1,4 +1,3 @@
-
 // 引入Three.js
 import * as THREE from "three";
 
@@ -9,7 +8,7 @@ import { ExtrudeMesh } from "./ExtrudeMesh.js";
 import { createRadarGroup } from "./RadarMesh.js";
 import { createCylinderMesh } from "./CylinderMesh.js";
 import { createConeMesh } from "./ConeMesh.js";
-import { wallGroup } from "./WallGroup.js";
+import { wallGroup } from "./WallGroup1.js";
 
 import { wallGroup as wallGroup2 } from "./WallGroup2.js";
 import { rendeLineGroup } from "./SubwayMesh.js";
