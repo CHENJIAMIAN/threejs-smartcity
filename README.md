@@ -1,10 +1,5 @@
-# vuecli4threejs
+![image](https://user-images.githubusercontent.com/20126997/223910406-ebf4da03-ab6f-4a87-ad34-9c130111bf89.png)
 
-## Project setup
-
-```
-npm install
-```
 
 ### Compiles and hot-reloads for development
 
